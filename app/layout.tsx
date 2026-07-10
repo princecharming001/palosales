@@ -8,12 +8,17 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+// Static export (GitHub Pages) serves under the /palosales subpath, so public
+// assets referenced in metadata must be prefixed manually.
+const assetPrefix =
+  process.env.NEXT_PUBLIC_STATIC_EXPORT === "true" ? "/palosales" : "";
+
 export const metadata: Metadata = {
   title: "Palo Sales Co-pilot",
   description:
     "A live sales-call co-pilot for Palo — fast, rep-voiced answers to prospect questions, objections, pricing, and positioning.",
   icons: {
-    icon: "/favicon.svg",
+    icon: `${assetPrefix}/favicon.svg`,
   },
 };
 

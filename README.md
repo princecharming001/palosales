@@ -80,8 +80,38 @@ lib/
 
 ## Deploy
 
-Works out of the box on **Vercel**. Set `ANTHROPIC_API_KEY` in the project's
-environment variables for live answers.
+There are two ways to host this, with an important trade-off:
+
+### 1. GitHub Pages (static, no server) — what's wired up
+
+GitHub Pages can only serve **static files** — it can't run the `/api/chat`
+server or hold an API key. So the Pages build is a **static export** where the
+chat runs **client-side from the knowledge base** (grounded answers, no key, no
+LLM synthesis).
+
+It deploys automatically via GitHub Actions on every push to `main`:
+
+1. In the repo, go to **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions** (not
+   "Deploy from a branch").
+3. Push to `main` — the workflow at `.github/workflows/deploy.yml` builds the
+   static export (`STATIC_EXPORT=true`) and publishes it to
+   `https://<user>.github.io/palosales/`.
+
+> The subpath (`/palosales`) is handled by `basePath` in `next.config.js`. If
+> you rename the repo, update `repo` there.
+
+### 2. Vercel (server) — for the **live** AI sales rep
+
+To get the full conversational, key-powered sales rep, deploy on a server host:
+
+1. Import the repo into **Vercel** (framework auto-detected as Next.js).
+2. Add environment variable `ANTHROPIC_API_KEY` (and optionally
+   `ANTHROPIC_MODEL`). Do **not** set `STATIC_EXPORT`.
+3. Deploy. The `/api/chat` route streams live answers from Claude.
+
+**Summary:** GitHub Pages = free public demo that answers from the knowledge
+base. Vercel (or any Node host) = the live LLM sales co-pilot using your key.
 
 ---
 

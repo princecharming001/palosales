@@ -96,6 +96,24 @@ You know Palo cold and you genuinely believe in it. You're consultative, not pus
 
 === PALO KNOWLEDGE BASE (your source of truth) ===`;
 
+/**
+ * Keyless demo responder (runs on server OR in the browser). Retrieves the most
+ * relevant knowledge sections and formats them into a grounded answer. Used when
+ * there's no API key (server) and when the app is a static export with no backend
+ * at all (GitHub Pages), so the chat still works without exposing a key.
+ */
+export function demoAnswer(query: string): string {
+  const hits = retrieve(query, 3);
+  if (!hits.length) {
+    return "I don't have that in my knowledge base yet. Ask me about what Palo does, its core features, how it works, or pricing.";
+  }
+  const intro = "Here's what I've got on that from Palo's knowledge base:";
+  const body = hits.map((h) => `\n\n### ${h.title}\n${h.content.trim()}`).join("");
+  const note =
+    "\n\n---\n*Demo mode (static hosting): answers are pulled straight from Palo's knowledge base. The live, conversational sales rep runs when the app is deployed on a server with an `ANTHROPIC_API_KEY`.*";
+  return `${intro}${body}${note}`;
+}
+
 export function buildSystemPrompt(): string {
   const body = PALO_KNOWLEDGE.map(
     (s) => `\n## ${s.title}\n${s.content.trim()}`

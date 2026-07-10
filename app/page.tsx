@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import { ChatMessage, type Msg } from "@/components/ChatMessage";
+import { demoAnswer } from "@/lib/knowledge";
 import {
   SendIcon,
   PlusIcon,
@@ -18,6 +19,11 @@ import {
   SparkIcon,
   PaloMark,
 } from "@/components/icons";
+
+// Static export (GitHub Pages) has no backend — the chat runs fully client-side
+// from the knowledge base. A real server deploy (Vercel) leaves this unset and
+// uses the live /api/chat route with Anthropic streaming.
+const STATIC_MODE = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
 
 interface Conversation {
   id: string;
@@ -123,7 +129,34 @@ export default function Page() {
       abortRef.current = controller;
       setStreaming(true);
 
+      const append = (chunk: string) =>
+        patchActive((c) => ({
+          ...c,
+          messages: c.messages.map((m) =>
+            m.id === assistantId ? { ...m, content: m.content + chunk } : m
+          ),
+          updatedAt: Date.now(),
+        }));
+
+      // Client-side responder for static hosting (no backend).
+      const runClientSide = async () => {
+        const query =
+          [...history].reverse().find((m) => m.role === "user")?.content ?? "";
+        const text = demoAnswer(query);
+        const tokens = text.match(/\S+\s*|\s+/g) || [text];
+        for (const t of tokens) {
+          if (controller.signal.aborted) return;
+          append(t);
+          await new Promise((r) => setTimeout(r, 12));
+        }
+      };
+
       try {
+        if (STATIC_MODE) {
+          await runClientSide();
+          return;
+        }
+
         const res = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -136,24 +169,25 @@ export default function Page() {
           signal: controller.signal,
         });
 
-        if (!res.body) throw new Error("No response stream");
+        // No backend reachable (e.g. served from a static host) → fall back.
+        if (!res.ok || !res.body) {
+          await runClientSide();
+          return;
+        }
+
         const reader = res.body.getReader();
         const decoder = new TextDecoder();
-
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
-          const chunk = decoder.decode(value, { stream: true });
-          patchActive((c) => ({
-            ...c,
-            messages: c.messages.map((m) =>
-              m.id === assistantId ? { ...m, content: m.content + chunk } : m
-            ),
-            updatedAt: Date.now(),
-          }));
+          append(decoder.decode(value, { stream: true }));
         }
       } catch (err) {
-        if ((err as Error).name !== "AbortError") {
+        if ((err as Error).name === "AbortError") return;
+        // Network/backend failure — try the client-side knowledge responder.
+        try {
+          await runClientSide();
+        } catch {
           patchActive((c) => ({
             ...c,
             messages: c.messages.map((m) =>

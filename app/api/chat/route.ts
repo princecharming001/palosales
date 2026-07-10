@@ -1,5 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { buildSystemPrompt, retrieve } from "@/lib/knowledge";
+import { buildSystemPrompt, demoAnswer } from "@/lib/knowledge";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -13,26 +13,6 @@ const MODEL = process.env.ANTHROPIC_MODEL || "claude-sonnet-5";
 
 function sse(text: string): Uint8Array {
   return new TextEncoder().encode(text);
-}
-
-/**
- * Keyless demo responder. When no API key is set, we still want a useful,
- * grounded answer — so we retrieve the most relevant knowledge sections and
- * stream them back as a formatted response, word by word, to mimic a live LLM.
- */
-function demoAnswer(query: string): string {
-  const hits = retrieve(query, 3);
-  if (!hits.length) {
-    return "I don't have that in my knowledge base yet. Ask me about what Palo does, its core features, how it works, or pricing.";
-  }
-  const intro =
-    "Here's what I know about that from the Palo knowledge base:";
-  const body = hits
-    .map((h) => `\n\n### ${h.title}\n${h.content.trim()}`)
-    .join("");
-  const note =
-    "\n\n---\n*Demo mode: this answer is retrieved directly from Palo's knowledge base. Add an `ANTHROPIC_API_KEY` for fully conversational, synthesized replies.*";
-  return `${intro}${body}${note}`;
 }
 
 async function streamText(
