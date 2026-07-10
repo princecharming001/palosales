@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Palo Assistant — AI chat trained on Palo",
+  title: "Palo Sales Co-pilot",
   description:
-    "An AI chat assistant that answers questions about Palo, its features, and how to use it.",
+    "A live sales-call co-pilot for Palo — fast, rep-voiced answers to prospect questions, objections, pricing, and positioning.",
   icons: {
     icon: "/favicon.svg",
   },

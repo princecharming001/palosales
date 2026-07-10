@@ -88,7 +88,8 @@ export async function POST(req: Request) {
       try {
         const llm = await client.messages.stream({
           model: MODEL,
-          max_tokens: 1400,
+          // Tight cap keeps answers short and fast for live sales calls.
+          max_tokens: 700,
           system,
           messages: messages.map((m) => ({
             role: m.role,

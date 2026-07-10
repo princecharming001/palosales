@@ -29,10 +29,10 @@ interface Conversation {
 const STORAGE_KEY = "palo-chat/conversations/v1";
 
 const SUGGESTIONS = [
-  "What is Palo and who is it for?",
-  "Walk me through Palo's core features.",
-  "How does Palo actually work under the hood?",
-  "What does Palo cost?",
+  "How is Palo different from ChatGPT?",
+  "$249/mo feels expensive — is it worth it?",
+  "Is my content and data safe?",
+  "When will I actually see results?",
 ];
 
 function uid() {
@@ -272,7 +272,7 @@ export default function Page() {
         <div className="flex items-center gap-2.5 px-4 pb-3 pt-4">
           <PaloMark />
           <div className="text-[15px] font-semibold tracking-tight">
-            Palo Assistant
+            Palo Sales Co-pilot
           </div>
         </div>
 
@@ -327,8 +327,8 @@ export default function Page() {
         </div>
 
         <div className="border-t border-hairline px-4 py-3 text-[11px] leading-relaxed text-faint">
-          Trained on Palo product knowledge. Answers are grounded in Palo&apos;s
-          docs — always verify critical details at{" "}
+          Internal sales co-pilot — grounded in Palo&apos;s real product,
+          pricing &amp; positioning. Double-check exact figures at{" "}
           <a
             href="https://palo.ai"
             target="_blank"
@@ -368,7 +368,7 @@ export default function Page() {
           <div className="ml-auto flex items-center gap-2">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-hairline bg-elevated px-2.5 py-1 text-[11px] text-muted">
               <span className="h-1.5 w-1.5 rounded-full bg-signal shadow-[0_0_6px_rgba(62,236,88,0.7)]" />
-              Palo knowledge
+              Sales mode
             </span>
           </div>
         </header>
@@ -381,11 +381,11 @@ export default function Page() {
                 <PaloMark width={48} height={48} />
               </div>
               <h1 className="animate-fade-up text-[30px] font-semibold tracking-[-0.03em] sm:text-[38px]">
-                Ask me anything about Palo
+                Your Palo sales co-pilot
               </h1>
               <p className="mt-2 max-w-md animate-fade-up text-[15px] text-muted">
-                I&apos;m trained on Palo&apos;s product knowledge — features, how
-                it works, pricing, and getting started.
+                Live on a call? Ask what to say — objections, pricing,
+                positioning. Fast answers in the voice of a real Palo rep.
               </p>
               <div className="mt-8 grid w-full gap-2.5 sm:grid-cols-2">
                 {SUGGESTIONS.map((s) => (
@@ -434,7 +434,7 @@ export default function Page() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={onKeyDown}
                 rows={1}
-                placeholder="Message Palo Assistant…"
+                placeholder="What's the prospect asking? Type it here…"
                 className="max-h-[200px] flex-1 resize-none bg-transparent py-1.5 text-[15px] leading-relaxed text-ink outline-none placeholder:text-faint"
               />
               {streaming ? (
@@ -457,8 +457,8 @@ export default function Page() {
               )}
             </div>
             <div className="mt-2 text-center text-[11px] text-faint">
-              Palo Assistant can make mistakes. Verify important details on
-              palo.ai.
+              Suggested talk-track. Verify exact pricing &amp; terms before
+              quoting on a live call.
             </div>
           </div>
         </div>

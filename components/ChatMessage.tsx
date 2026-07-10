@@ -59,7 +59,7 @@ function AssistantBubble({
       </div>
       <div className="min-w-0 flex-1">
         <div className="mb-1 text-[13px] font-semibold text-ink">
-          Palo Assistant
+          Say this
         </div>
         <div className="prose-chat text-ink/90">
           {content ? (
