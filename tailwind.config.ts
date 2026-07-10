@@ -5,22 +5,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        canvas: "#0b0b0f",
-        panel: "#131318",
-        elevated: "#1b1b22",
-        hairline: "#26262f",
-        ink: "#ededf2",
-        muted: "#9a9aa8",
-        faint: "#6b6b78",
+        // Palo's neutral dark surfaces (from palo.ai)
+        canvas: "#1c1c1c",
+        panel: "#141414",
+        elevated: "#222222",
+        raised: "#2a2a2a",
+        deep: "#0a0a0a",
+        hairline: "rgba(217,217,217,0.10)",
+        ink: "#ffffff",
+        muted: "#959595",
+        faint: "#6a6a6a",
+        // Primary accent — Palo's iOS blue
         brand: {
-          DEFAULT: "#7c5cff",
-          soft: "#9d84ff",
-          glow: "#5b3df0",
+          DEFAULT: "#007aff",
+          soft: "#3897ff",
+          glow: "#0a84ff",
+        },
+        // Secondary accent — Palo's signal green
+        signal: {
+          DEFAULT: "#3eec58",
+          soft: "#4dff67",
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["var(--font-inter)", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
+      },
+      letterSpacing: {
+        tightest: "-0.03em",
       },
       keyframes: {
         "fade-up": {

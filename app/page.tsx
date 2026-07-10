@@ -279,7 +279,7 @@ export default function Page() {
         <div className="px-3">
           <button
             onClick={startNewChat}
-            className="flex w-full items-center gap-2 rounded-xl border border-hairline bg-elevated px-3 py-2.5 text-[14px] font-medium text-ink transition hover:border-brand/50 hover:bg-brand/10"
+            className="flex w-full items-center justify-center gap-2 rounded-full bg-brand px-3 py-2.5 text-[14px] font-medium text-white transition hover:bg-brand-glow"
           >
             <PlusIcon width={16} height={16} />
             New chat
@@ -367,7 +367,7 @@ export default function Page() {
           </div>
           <div className="ml-auto flex items-center gap-2">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-hairline bg-elevated px-2.5 py-1 text-[11px] text-muted">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <span className="h-1.5 w-1.5 rounded-full bg-signal shadow-[0_0_6px_rgba(62,236,88,0.7)]" />
               Palo knowledge
             </span>
           </div>
@@ -380,7 +380,7 @@ export default function Page() {
               <div className="mb-5 animate-fade-up">
                 <PaloMark width={48} height={48} />
               </div>
-              <h1 className="animate-fade-up text-2xl font-semibold tracking-tight sm:text-[28px]">
+              <h1 className="animate-fade-up text-[30px] font-semibold tracking-[-0.03em] sm:text-[38px]">
                 Ask me anything about Palo
               </h1>
               <p className="mt-2 max-w-md animate-fade-up text-[15px] text-muted">
@@ -440,7 +440,7 @@ export default function Page() {
               {streaming ? (
                 <button
                   onClick={stop}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-elevated text-ink transition hover:bg-hairline"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-elevated text-ink transition hover:bg-raised"
                   aria-label="Stop generating"
                 >
                   <StopIcon width={16} height={16} />
@@ -449,7 +449,7 @@ export default function Page() {
                 <button
                   onClick={() => send(input)}
                   disabled={!input.trim()}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand text-white transition enabled:hover:bg-brand-glow disabled:cursor-not-allowed disabled:opacity-40"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-white transition enabled:hover:bg-brand-glow disabled:cursor-not-allowed disabled:bg-elevated disabled:text-faint disabled:opacity-100"
                   aria-label="Send message"
                 >
                   <SendIcon width={17} height={17} />
