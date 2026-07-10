@@ -1,208 +1,251 @@
 import type { KnowledgeSection } from "./knowledge";
 
 /**
- * The Palo knowledge base.
+ * The Palo knowledge base — derived from Palo's official Messaging One-Pager
+ * (the single source of truth for all sales/marketing copy). Content, voice,
+ * claims, and nomenclature here are canonical. If a fact isn't in here, it
+ * should be derived from §"What Palo is" and the voice rules — never improvised.
  *
- * Single source of truth for what the assistant knows. Each section is grounded
- * in Palo's own product docs, landing copy, and pricing surfaces. Edit here to
- * update the bot — no retraining, no vector DB.
+ * Edit this file to update what the sales co-pilot knows and how it speaks.
  */
 export const PALO_SECTIONS: KnowledgeSection[] = [
   {
-    id: "overview",
-    title: "What Palo is",
-    tags: ["about", "overview", "what", "product", "creator", "workspace", "ai"],
-    content: `Palo (palo.ai) is an **invite-only AI workspace built for serious, cross-platform short-form video creators**. You connect your social accounts (YouTube, TikTok, Instagram) and Palo continuously watches and analyzes your videos to build a "live intelligence" of your content — then acts as an opinionated content strategist across the whole creation pipeline: understanding what works, generating ideas, outlining, scriptwriting, critiquing drafts before you post, publishing, and tracking cross-platform analytics.
+    id: "what-palo-is",
+    title: "What Palo is (the canonical line)",
+    tags: ["about", "overview", "what", "product", "strategist", "pitch", "elevator", "explain", "summary"],
+    content: `**Palo is the AI content strategist that learns your channel, builds it a brain, and works on it 24/7.**
 
-The tagline is **"Serious power for serious creators."** Palo's core claim: it "doesn't just know what your videos are, it knows *why* they work and why they don't — down to the smallest details."
+Length variants:
+- **Shortest:** The AI content strategist.
+- **Short:** Palo learns your channel, builds it a brain, and never stops working.
+- **Long:** Palo studies every video you've made, builds your channel a brain — your strategy, your patterns, your playbook — and never stops working on it: spotting what's moving, running experiments, and leaving your next video ready every morning. Built for short-form: Shorts, Reels, and TikTok.
 
-Internally, Palo is one creator pipeline: **Brain → Ideate → Outline → Write → Publish → Track**, where Track's insights loop back into Ideate.`,
+**Business positioning line:** Not a tool you use. A strategist you hire.`,
   },
   {
-    id: "access",
-    title: "Access & membership (invite-only)",
-    tags: ["access", "invite", "membership", "waitlist", "signup", "join", "request", "trial"],
-    content: `Palo is **invite-only**. The main call to action is **"Request Membership"** — "Palo access is invite only." There's a waitlist and invite system; invited users get a bonus trial.
+    id: "the-intelligence",
+    title: "The product is the intelligence (why it's worth it)",
+    tags: ["value", "intelligence", "overnight", "nightly", "why", "worth", "core", "moat", "defensible", "compute", "expensive", "night"],
+    content: `The real product is the intelligence. Every night, Palo holds your entire channel in mind at once — who you are, the strategy it's built, every tactic it's running and where each one stands, your last 28 days of numbers, your newest videos, your top performers, the conversations you've had, the experiments it's watching. It catches what a person would miss: a breakout forming, a bet paying off, a format going stale. Then it investigates, cross-references, and rewrites what it believes.
 
-**Free trial:** 3 days free by default, or **7 days free** when you arrive through an invite with a trial bonus.
+A human strategist does this review once a quarter and bills by the hour. Palo does it every single night — no human can hold that much at once, and no human would do it nightly. That's the defensible core, and it's honestly why it costs what it costs: real compute, every night, spent on your channel.
 
-**Sign-in:** primary auth is magic-link / email code. Password and OAuth (Google/YouTube/TikTok/Instagram) are secondary options.`,
+**The "overnight" story (paste-ready):** Every night, Palo clocks in. It looks over your recent videos and your top performers. It compares this week to your last month. It rereads the conversations you've had and the strategy it's already built. It notices things — a video from two months ago quietly picking up views, a pattern starting to fatigue, a post you skipped. It investigates, cross-references, and updates your channel's brain. By morning, it knows your channel better than it did yesterday. And your next video is waiting.
+
+Ideas, scripts, outlines, and reviews are where the value *actualizes* — they're the deliverables. Lead with them to hook, but never let them define the product, or Palo becomes "an idea generator" (a $10 product). Palo is the strategist; the ideas are its output.`,
   },
   {
-    id: "feature-set-to-work",
-    title: "Set Palo to Work (24/7 analysis)",
-    tags: ["tracking", "analyze", "24/7", "connect", "link", "account", "channel", "page", "background"],
-    content: `**"Set Palo to Work"** connects a social account and puts it under continuous AI tracking — Palo "will watch & analyze your content 24/7." This is the foundation that powers every other feature.
+    id: "the-build",
+    title: "What happens when you Build my brain",
+    tags: ["build", "brain", "onboarding", "setup", "start", "first", "watch", "niche", "strategy", "how it works"],
+    content: `When someone presses **Build my brain**, here's what happens (paste-ready):
 
-Once a page is linked and tracking is on, Palo scrapes stats, analyzes each video, builds a channel analysis (identity, content clusters, insights), maintains a per-channel living **strategy** document, and fires proactive findings. In customer language a connected account is a **page**; internally it's a **channel**, and most data in the product is scoped to it.`,
+First, Palo watches. Every video on your page — not just the titles and the numbers, but the videos themselves, the way a strategist would watch them. It learns who you are: your voice, your world, what your audience shows up for. Then it studies your niche — the channels winning around you and the formats that got them there. It weighs all of it against how elite strategists think, argues with itself about what your channel should do next, and writes the answer down: your strategy. Alongside it, your library — every hook, build-up, and payoff that works for you, each one labeled by how proven it is. That's your brain. And from that night on, Palo never stops updating it.
+
+**Build my brain** is the one unlock CTA everywhere — landing, gated widgets, onboarding, paywall.`,
   },
   {
-    id: "feature-brain",
-    title: "Palo Brain",
-    tags: ["brain", "patterns", "clusters", "visualize", "catalog", "map", "understanding"],
-    content: `**Palo Brain** lets you "visualize your content and discover patterns." It's a visual map of your whole catalog that surfaces content clusters, storytelling patterns, and recurring elements — built on Palo's channel-analysis pipeline (identity, clusters, insights).
+    id: "experiments",
+    title: "Palo runs experiments",
+    tags: ["experiment", "playbook", "tactics", "status", "proven", "declining", "bets", "test", "double down", "retire"],
+    content: `Palo doesn't just advise — it experiments. Every tactic in your playbook has a status — experiment, early signal, proven, declining — and Palo moves them based on what actually happens on your channel. Winners get doubled down on. What fades gets retired.
 
-Brain is one of the few surfaces available on the **Free** plan, and it's one of the mobile-accessible surfaces.`,
+Copy angles:
+- "It doesn't just advise. It experiments."
+- "Palo places bets on your channel — and keeps the winners."
+
+(Sell the *concept* of experimentation, not the internal labeling system.)`,
   },
   {
-    id: "feature-chat-ideate",
-    title: "Palo Chat / Ideate",
-    tags: ["chat", "ideate", "ideas", "advice", "ask", "agent", "insights", "brainstorm"],
-    content: `**Palo Chat** ("Ask Palo anything…") is a conversational agent grounded in *your own* data plus Palo's storytelling **Doctrine**. Use it to ask for ideas, advice, and insights. It generates ideas and story beats and can pull in retrieval tools — diagnostics, playbooks, and your channel strategy.
+    id: "the-story",
+    title: "How Palo works — the 5 beats",
+    tags: ["how", "works", "story", "process", "learn", "niche", "brain", "deliver", "nonstop", "steps", "walk me through"],
+    content: `The narrative spine (keep this order):
 
-This is the **Ideate** stage of the pipeline; insights from Track feed back into it so ideas get sharper over time.`,
+1. **Palo learns who you are.** Not a form — it watches every video you've made: the content, the numbers, the voice, the brand, the person. Everything starts from your identity, not a universal formula.
+2. **Then it masters your niche.** It studies the channels winning around you — what formats got them there, and which fit *you*.
+3. **It builds your brain.** It argues with itself over what your channel should do, then writes the answer down: a thesis, a direction, and a playbook — every hook, build-up, and payoff, each marked by how proven it is.
+4. **It puts the brain to work.** Daily ideas, outlines, scripts, honest reviews — every one traceable to why.
+5. **It never turns off.** Every night it reviews everything, moves its experiments forward, and updates what it believes. Smarter every morning.
+
+**Paragraph version (paste-ready):** Palo starts by learning who you are — it watches every video you've made, the content and the numbers, until it understands your channel: your voice, your world, what your audience shows up for. Then it masters your niche — the channels winning around you and the formats that got them there. From all of it, it builds your brain: a strategy for your channel and a playbook of tactics, each one marked by how proven it is. It puts that brain to work every day — ideas, outlines, scripts, reviews. And it never turns off. Every night it reviews everything, moves its experiments forward, and updates what it believes. Smarter every morning.`,
   },
   {
-    id: "feature-outline",
-    title: "Palo Outline",
-    tags: ["outline", "structure", "beats", "plan", "video"],
-    content: `**Palo Outline** helps you "structure out your videos to perfect them." It's the AI outlining stage that organizes a video's beats before you move into scriptwriting.`,
+    id: "education-strategist",
+    title: "The strategist — the job behind every big channel",
+    tags: ["strategist", "job", "education", "big channels", "hire", "role", "head of content", "who decides", "employee"],
+    content: `Use this to create the need before selling the solution.
+
+Every big channel runs on a job most people have never heard of: the strategist — the one deciding what gets made, what gets shelved, and why. Top creators pay serious money for that person. Most people don't even know the job exists.
+
+**Paste-ready mini-narrative:** Every big channel runs on a job you've never heard of. Not the person on camera. Not the editor. The strategist — the one who decides what gets made, what gets shelved, and why last week's video worked. Top creators pay six figures for that person. Most people don't even know the job exists. That's the job Palo does.
+
+One-liner: "Top creators pay for content strategists. Most people don't know they exist."`,
   },
   {
-    id: "feature-write",
-    title: "Palo Write (scriptwriting)",
-    tags: ["write", "script", "scriptwriting", "editor", "collaborative", "viral", "rephrase", "desktop"],
-    content: `**Palo Write** is "scriptwriting built to help you go viral" — a real-time collaborative script editor built for content virality. It supports AI fill / edit / add actions and inline transforms like **Rephrase, Shorten, Add Tension, and Cut Fluff**.
+    id: "feature-todays-pick",
+    title: "Feature — Today's Pick",
+    tags: ["today", "pick", "daily", "idea", "next video", "ideas", "feature", "researched", "ready"],
+    content: `**Today's Pick — Your next video. Researched, sourced, ready to make.**
 
-**Important:** the Write editor is **desktop-only by design.** On mobile it shows a "Switch to PC" screen. (You can still talk to Palo from your phone via Mobile Texting.)`,
+Palo doesn't wait to be asked. Each day it hands you a fully-formed video idea pulled from your brain, your niche, and what's working right now — with the sources attached so you can see exactly why it picked it. Open it, remix it, or shoot it as-is.`,
   },
   {
-    id: "feature-review",
-    title: "Palo Review (Creative Review)",
-    tags: ["review", "critique", "draft", "feedback", "hooks", "payoff", "pacing", "timestamped"],
-    content: `**Palo Review** (Creative Review) gets "your video drafts critiqued before you post." Palo gives **timestamped notes on hooks, payoffs, and pacing** on a draft video, so you can fix problems before publishing (e.g. "3-5s: huge tangent," "revealed too soon").`,
+    id: "feature-insights",
+    title: "Feature — Insights",
+    tags: ["insights", "findings", "what's working", "why", "recommendation", "feature", "evidence", "advice"],
+    content: `**Insights — What's working. Why. What to do next.**
+
+As Palo studies your channel, it forms findings — specific, evidence-backed observations about your content. When one matters, it shows up as an insight: the claim, the numbers behind it, and one concrete move to make. No dashboards to decode. No "data suggests."`,
   },
   {
-    id: "feature-track",
-    title: "Palo Track (analytics)",
-    tags: ["track", "analytics", "metrics", "views", "subscribers", "followers", "cross-platform", "insights"],
-    content: `**Palo Track** puts "your entire cross-platform analytics in one place" with AI insights layered on top. It shows views over time (e.g. Views Last 48h), subscribers/followers, per-page selection, and AI-generated insights.
+    id: "feature-library",
+    title: "Feature — Library (your playbook)",
+    tags: ["library", "playbook", "hooks", "tactics", "proven", "feature", "experiments", "in play"],
+    content: `**Library — Your playbook. Everything Palo has in play, in one place.**
 
-Track is the end of the pipeline — and its insights loop back into Ideate to inform your next ideas.`,
+Palo builds a living playbook from your content: the hooks that stop the scroll, the build-ups that hold attention, the payoffs that earn the rewatch — plus the experiments it's running to find the next one. Every tactic has a status and real numbers behind it. What proves out gets promoted. What fades gets retired.
+
+Note: it's what Palo *has in play* (proven tactics + live experiments), not just "everything that works."`,
   },
   {
-    id: "feature-scope",
-    title: "Scope (research & discovery)",
-    tags: ["scope", "research", "discovery", "competitors", "outliers", "trends", "hooks", "trending", "niches", "internet"],
-    content: `**Scope** helps you "understand the internet." Palo tracks trends, creators, and hooks, and Scope surfaces them across views like **Competitors, Outliers, Top Hooks, Top Last 7d, and Trending Niches** — e.g. "give me 1M+ view videos in my formats." It's how you find high-performing external content in your own formats.`,
+    id: "feature-creative-review",
+    title: "Feature — Creative Review",
+    tags: ["review", "creative review", "critique", "feedback", "timestamped", "feature", "draft", "honest"],
+    content: `**Creative Review — Every second, accounted for.**
+
+Drop in any video and get an honest, timestamped read. Palo reviews videos the way a strategist would — moment by moment, calling out where attention is won and lost, and what to change next time. Specific, direct, and grounded in how your audience actually behaves.`,
   },
   {
-    id: "feature-publish",
-    title: "Publish",
-    tags: ["publish", "renders", "post", "title", "suggestions", "voice", "translate", "caption", "spring"],
-    content: `**Publish** lets you "view and publish your renders to any platform with live AI suggestions." It offers title suggestions and critique (e.g. "strong but too long," "revealed too soon"), plus **AI Voice, Auto Translate, and AI Caption**.
+    id: "feature-chat",
+    title: "Feature — Chat",
+    tags: ["chat", "ask", "talk", "strategist", "feature", "questions", "advice", "remembers"],
+    content: `**Chat — The one AI that knows your channel.**
 
-Publish is Palo's newest surface — parts are marked **"Coming this spring"** and it isn't fully live in production yet.`,
+Talk strategy with the strategist who's seen every video you've made. Ask Palo anything — what to post, why a video underperformed, what pattern it's seeing. It answers from your brain, your library, and your numbers, not generic advice. And it remembers the decisions you make together.`,
   },
   {
-    id: "feature-network-teams-mobile",
-    title: "Network, Teams & Mobile Texting",
-    tags: ["network", "profile", "identity", "friends", "teams", "seats", "collaborate", "mobile", "texting", "phone"],
-    content: `**Network** is your "one profile" — a cross-platform creator identity and social layer ("access the Palo network with your cross-platform identity," including a Friends layer). It's available on the **Free** plan.
+    id: "feature-outline-script",
+    title: "Features — Outline & Script",
+    tags: ["outline", "script", "write", "scriptwriting", "camera-ready", "feature", "hook", "voice", "structure"],
+    content: `**Outline — From idea to camera-ready.**
+Palo structures your video before you shoot it — hook, build-up, payoff, beat by beat — using the patterns from your playbook. You walk in knowing exactly what you're making and why it's built that way.
 
-**Teams** lets you add teammates to open and work on your projects in your overview. A manager can operate on behalf of a managed creator.
-
-**Mobile Texting** lets you "talk to Palo from anywhere using your phone" — so even though the full editor is desktop-only, you can chat with Palo on mobile.`,
+**Script — Your video, written.**
+Palo writes full scripts in your voice, on your patterns — the hooks that stop the scroll, the pacing that holds, the payoff that earns the rewatch. Not generic AI writing: your playbook, executed.`,
   },
   {
-    id: "feature-pulse",
-    title: "Pulse / Weekly Pulse / Proactive Palo",
-    tags: ["pulse", "weekly", "proactive", "monday", "brief", "digest", "overnight", "thoughts", "strategist", "notifications"],
-    content: `**Pulse** is Palo's proactive strategist layer — it turns Palo "from a passive tool you open into an actively reaching-out content strategist."
+    id: "feature-live-activity",
+    title: "Feature — Live Activity",
+    tags: ["live activity", "always working", "offline", "work log", "feature", "employee", "status"],
+    content: `**Live Activity — Palo is always working, even when you're offline.**
 
-**Weekly Pulse** is a weekly brief delivered **every Monday**. Free users get a data-only digest; paid users get LLM-written narratives, cross-video patterns, and concrete recommendations.
-
-**Proactive Palo** ("today" view) assembles a day verdict and summary in Palo's voice, a **"hero"** (ideas plus a ready-to-post shot script grounded in your own top videos), ranked **findings**, and a **"Palo's activity"** provenance trace showing which sensor fired and why.
-
-On **Studio Max**, related proactive features include **Overnight Ideas** (briefs Palo generates for you overnight), **Get Palo Thoughts**, and **Change Palo's Personality**.`,
+Open Palo any time and see what it's been doing: studying your videos, scoping your niche, adding to your library, forming ideas. It's not a status bar — it's your employee's work log.`,
   },
   {
-    id: "pipeline",
-    title: "How Palo works — the creation pipeline",
-    tags: ["how", "works", "pipeline", "flow", "project", "stages", "process", "onboarding"],
-    content: `A **Project** threads one piece of content through stages: **IDEA → WRITING → EDITING → REVIEW → COMPLETED**. In practice you ideate in Chat, move to Outline, then Write the script, then Review the draft critique, then Publish — while Track monitors performance and feeds insights back into new ideas.
+    id: "proof-lines",
+    title: "What Palo tells you (example insights)",
+    tags: ["proof", "examples", "insights", "output", "sample", "cheese", "retention", "hook", "like what", "for instance"],
+    content: `Illustrative examples of Palo's output — always specific, always a number, always one physical instruction. Frame these as "the kind of thing Palo tells you," never a promised result:
 
-**Onboarding** branches on creator type (aspiring, growing, established, business). It's a guided wizard (or an AI-chat flow) that covers your knowledge level and interests, a pricing/Stripe step, and a final gate where you must **link at least one channel**. Aspiring creators go through niche selection and get a generated channel identity; established/growing creators get their channel analyzed directly.`,
+- "When you put cheese in your videos, you get 5× more views. Get it on camera in the first 3 seconds."
+- "Your intros open on a still logo — you lose 68% of viewers in the first 3 seconds. Open on the action instead."
+- "Your tunnel video is resurging — 18.5M views and climbing. I've drafted a follow-up idea."
+- "The countdown format is fatiguing. Park it for a few weeks — here's what to run instead."`,
   },
   {
-    id: "audience",
-    title: "Who Palo is for",
-    tags: ["who", "audience", "icp", "creators", "followers", "established", "target", "for"],
-    content: `Palo is built for **serious, top, cross-platform short-form video creators.** The landing page frames it as "purpose built for the top cross-platform creators" and references creators with large followings (marketing says 1M+; internal notes describe an established-creator profile around ~100k+ followers with an existing content backlog).
+    id: "audience-roi",
+    title: "Who Palo is for + ROI framing",
+    tags: ["audience", "who", "business", "creator", "roi", "price", "cost", "justify", "small business", "agency", "worth it", "expensive"],
+    content: `**Primary: small businesses** (pool cleaners, salons, local services) doing short-form. They expense $75–250/mo without blinking *if it's framed as hiring, not software.*
+- Lead frame: an employee/strategist you hire. Hero: "Hire the strategist you can't afford."
+- ROI line: **"Less than one hour of an agency. Working every hour of the month."**
 
-The safe framing: Palo is for **established, cross-platform short-form creators** who post regularly and have a catalog of videos worth analyzing.`,
+**Secondary: creators** (growing → established). Price is harder; lead with outcome and time-back.
+- Lead frame: creative sidekick. Palo doesn't replace your vision — it protects and reality-checks it. You bring the creative gem; Palo tells you what will actually perform. No creator wants to stare at analytics; Palo stares at them for you.
+- Line: **"You stay the artist. Palo handles the strategy."**`,
   },
   {
-    id: "positioning",
-    title: "Why Palo is different (positioning)",
-    tags: ["why", "different", "positioning", "value", "differentiator", "benefit", "compare"],
-    content: `Palo's differentiator: "Palo is constantly watching your videos to build a **live intelligence** of everything in your content. It doesn't just know *what* your videos are, it knows *why* they work and why they don't — down to the smallest details. It's trained on thousands of storytelling elements and can find patterns and errors across your page to help you grow."
+    id: "production-agnostic",
+    title: "Production-agnostic — what, not how",
+    tags: ["production", "filming", "editing", "camera", "ai video", "how you shoot", "make the video", "record"],
+    content: `Palo's job is what goes *into* the video — the idea, the strategy, the script — not how you produce it. Face on camera, AI generation, whatever.
+- "We don't care how you make the video. We care what you make."
+- "Palo tells you what to make. How you shoot it is yours."
 
-Other positioning themes:
-- **Cross-platform, one place** — one profile and one analytics view across YouTube, TikTok, and Instagram.
-- **Built for virality** — writing and scripting are "built to help you go viral."
-- **Proactive, not passive** — Pulse reaches out to you instead of waiting to be opened.
-- **Fits your workflow** — integrates with your existing tools (AI Voice, Auto Translate, AI Caption).
-- **Results scale with use** — "the more you follow Palo's direction, the better your results will be."`,
+Never promise videography/editing coaching — that's deliberately out of scope. Never disparage production tools either.`,
+  },
+  {
+    id: "claims",
+    title: "Claims — what Palo can and cannot say",
+    tags: ["claims", "honesty", "guarantee", "cannot", "rules", "promise", "safe", "data", "privacy", "true"],
+    content: `**CAN say (all literally true):**
+- Palo watches/studies every video on your page — the content itself, not just the numbers.
+- Palo works 24/7 / overnight / while you sleep, and gets smarter about your channel every night.
+- Every insight is backed by evidence from your actual videos and numbers.
+- Palo remembers your decisions and never contradicts what you agreed on.
+- Palo leaves you at least one new deliverable every day (idea, script, outline, or review).
+- Palo is trained on how elite content strategists think.
+- Palo studies the winning channels in your niche and what makes their formats work.
+- Palo runs experiments on your channel — winners doubled down on, fades retired.
+- Palo knows who you are and stays in your lane (it won't pitch a Tokyo video if you're not in Tokyo).
+- Palo is a fraction of the cost of a professional strategist — and holds more in mind than any human could, reviewed every night.
+- Supports YouTube Shorts, Instagram Reels, and TikTok.
+
+**CANNOT say:**
+- Guaranteed views, growth, or virality.
+- "Palo replaces your whole team" — it's the strategist you'd otherwise pay for.
+- Mechanism names (index, embeddings, model, "analyzes your data," AI-powered).
+- Long-form, or any platform beyond the three above.
+- Real-time competitor monitoring — Palo *studies* your niche; it's not a live tracker.
+- Production coaching — never imply filming/editing/camera lessons.`,
   },
   {
     id: "pricing",
-    title: "Pricing & plans",
-    tags: ["pricing", "price", "cost", "plans", "free", "studio", "max", "money", "subscription", "how much", "tier"],
-    content: `Palo has three tiers:
+    title: "Pricing, trial & CTA",
+    tags: ["pricing", "price", "cost", "studio", "max", "plan", "trial", "referral", "how much", "cta", "free", "money", "subscription", "seats", "pages"],
+    content: `**Studio — $75/mo:** Palo works your channel 24/7 · Chat · Outline · Write · Review · Library.
 
-**Free — $0.** Limited surfaces: **Brain, Network, and public profiles.** Weekly Pulse is a data-only digest.
+**Studio Max — $250/mo:** everything in Studio + 20× usage + 5 pages (then $25/mo each) + 2 team seats (then $25/mo each).
 
-**Studio — $75/month.** Unlocks the core pipeline: Set Palo to Work, Brain, Chat, Outline, Write, Review, Track, Mobile Texting, and Teams. Palo watches **2 pages** 24/7.
+**Trial:** 3 days free. **7 days when referred by an existing Palo user** — use the longer trial as the referral perk.
 
-**Studio Max — $249/month.** Everything in Studio, plus **~20x more usage**, **5 pages** (then **$25/mo per additional page**), **2 team seats** (then **$25/mo per additional seat**), and the proactive features: Overnight Ideas, Get Palo Thoughts, and Change Palo's Personality. It's "supercharged with Palo's most advanced intelligence."
+**CTA verbs:**
+- **Build my brain** — the one unlock verb: product-led contexts, gated widgets, onboarding, site CTA.
+- **Try 3 days free** — pricing/paywall contexts only.
 
-**Trial:** 3 days free (7 days with an invite). **Billing** is via Stripe. If you cancel within a current billing period or free trial you won't be charged again, and you keep access until the plan ends. You can downgrade (Studio Max → Studio).
-
-Usage is intentionally limited on lower tiers to maintain performance, since Palo's analysis is deeper than standard AI tools; Studio Max offers effectively unlimited usage.`,
+Campaign angle (business-persona ads only): "Hire a Head of Content for $75/month."`,
   },
   {
-    id: "platforms",
-    title: "Supported platforms & devices",
-    tags: ["platforms", "youtube", "tiktok", "instagram", "supported", "devices", "desktop", "mobile", "pc", "languages"],
-    content: `**Supported platforms:** YouTube, TikTok, and Instagram. Guidance: "link as many as you can to make Palo work as well as possible."
+    id: "category-nomenclature",
+    title: "Category term, platforms & locked nomenclature",
+    tags: ["category", "term", "positioning", "ai content strategist", "brain", "playbook", "platforms", "youtube", "tiktok", "instagram", "shorts", "reels", "short-form", "glossary", "terms"],
+    content: `**Category (locked):** AI content strategist. Use it everywhere a category is named. It's a real job title — that's what makes the "strategist you've never heard of" story land.
 
-**Desktop vs mobile:** The **Write editor is desktop-only** ("Switch to PC"), and the full app is optimized for larger screens. **Mobile Texting** lets you chat with Palo from your phone, and **Brain, Network, and public profiles** are the mobile-accessible surfaces.
+**Platforms (locked):** YouTube Shorts, Instagram Reels, TikTok. Always "short-form." Never imply long-form.
 
-**Languages:** Palo ships in **English and Japanese.**`,
+**Locked terms:**
+- **brain** — the durable thing Palo builds and maintains for your channel ("Palo builds a brain for your channel"). Lowercase in prose. Never a UI tab/feature name — the brain is the *thing*, not a screen.
+- **playbook** — the deployable layer of the brain: the tactics Palo is actively running for your channel (proven plays + live experiments).
+- **Build my brain** — the one unlock/CTA verb everywhere.
+- **Trial** — 3 days free; 7 days when referred by an existing Palo user.`,
   },
   {
-    id: "privacy",
-    title: "Privacy & security",
-    tags: ["privacy", "security", "data", "safe", "private", "confidential", "public"],
-    content: `Palo does **not** use any information that isn't public — unless you give it non-public information yourself while chatting. **Your content is not used to make Palo better for other creators**; it's secure and private to you by design. (See Palo's Privacy Policy for full details.)`,
-  },
-  {
-    id: "glossary",
-    title: "Glossary of Palo terms",
-    tags: ["glossary", "terms", "terminology", "definitions", "meaning", "vocabulary", "doctrine", "niche", "hook"],
-    content: `- **Page** — a connected social account (Studio = 2, Studio Max = 5). Internally a **channel**.
-- **AI tracking / "Set Palo to Work"** — the background system that watches and analyzes a page 24/7.
-- **Project** — one piece of content moving through IDEA → WRITING → EDITING → REVIEW → COMPLETED.
-- **Brain** — the visual intelligence layer over your catalog (patterns, clusters).
-- **Scope** — the external research surface (competitors, outliers, top hooks, trending niches).
-- **Network** — your cross-platform creator profile and social layer.
-- **Pulse / Weekly Pulse / Proactive Palo** — the proactive weekly brief and daily strategist, with a hero, findings, and a "Palo's activity" trace.
-- **Doctrine** — Palo's hand-authored storytelling worldview that grounds its AI agents.
-- **Strategy** — a per-channel living strategy document applying the Doctrine to your data.
-- **Niche** — a synthesized content-category document; aspiring creators pick one during onboarding.
-- **Hook / Tension / Payoff** — Palo's core storytelling beat vocabulary, used in Write, Review, and Publish.
-- **Renders** — finished/exported video files you publish.
-- **Overnight Ideas / Briefs** — ideas Palo generates for you overnight (Studio Max).`,
-  },
-  {
-    id: "faq-results",
-    title: "FAQ — Getting results & usage limits",
-    tags: ["faq", "results", "usage", "limits", "why", "slow", "unlimited", "performance", "when"],
-    content: `**When will I see results?** "The more you follow Palo's direction, the better your results will be." As you continuously follow its guidance, you should see results.
+    id: "headlines-hooks",
+    title: "Approved headlines & hooks (for framing answers)",
+    tags: ["headline", "hook", "tagline", "slogan", "one-liner", "pitch line", "opener", "subject line"],
+    content: `Ship-ready lines to draw on (short declaratives; a period does the selling, never an exclamation mark):
 
-**Why is usage limited?** Palo limits usage on lower tiers to maintain high performance, because its analysis is deeper than standard AI tools. **Studio Max** gives ~20x more usage — effectively unlimited.
+**Outcome-led:** "Wake up to your next viral video." · "Your next viral video is already in the works." · "Every morning: a video worth making."
 
-**What does Palo actually analyze?** It studies your video backlog to find which **hooks and pacing drive retention** and recommends what to make next. Review then gives timestamped notes on hooks, payoffs, and pacing before you post.`,
+**Strategy-problem:** "Your videos aren't the problem. Your strategy is." · "It's not your camera. It's your strategy."
+
+**Hire-led:** "It's not software you learn — it's a strategist you hire." · "Not a tool you use. A strategist you hire." · "One strategist. Zero days off." · "For the price of one agency hour, Palo works the whole month."
+
+**Always-working:** "Never stops working. Ever." · "Always on. Always learning." · "Smarter every morning." · "While you sleep, it studies."
+
+**Proof/experiment:** "Knows what works. And why." · "It doesn't just advise. It experiments." · "Palo places bets on your channel. And keeps the winners."
+
+**Sales one-liners:** "Palo watches every video on your page, builds your channel a brain, and works it around the clock." · "Everything it tells you comes with receipts — your videos, your numbers." · "One deliverable a day, minimum. Most employees can't promise that."`,
   },
 ];

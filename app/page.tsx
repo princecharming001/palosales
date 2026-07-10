@@ -36,8 +36,8 @@ const STORAGE_KEY = "palo-chat/conversations/v1";
 
 const SUGGESTIONS = [
   "How is Palo different from ChatGPT?",
-  "$249/mo feels expensive — is it worth it?",
-  "Is my content and data safe?",
+  "$250/mo feels expensive — is it worth it?",
+  "What do I actually get every day?",
   "When will I actually see results?",
 ];
 
