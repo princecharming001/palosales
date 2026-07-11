@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import { ChatMessage, type Msg } from "@/components/ChatMessage";
+import { PasswordGate } from "@/components/PasswordGate";
 import { demoAnswer } from "@/lib/knowledge";
 import {
   SendIcon,
@@ -296,6 +297,7 @@ export default function Page() {
   const isEmpty = !active || active.messages.length === 0;
 
   return (
+    <PasswordGate>
     <div className="flex h-[100dvh] overflow-hidden text-ink">
       {/* Sidebar */}
       <aside
@@ -498,5 +500,6 @@ export default function Page() {
         </div>
       </main>
     </div>
+    </PasswordGate>
   );
 }

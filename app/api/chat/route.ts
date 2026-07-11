@@ -68,8 +68,8 @@ export async function POST(req: Request) {
       try {
         const llm = await client.messages.stream({
           model: MODEL,
-          // Tight cap keeps answers short and fast for live sales calls.
-          max_tokens: 700,
+          // Tight cap = short, skimmable, fast answers for live sales calls.
+          max_tokens: 400,
           system,
           messages: messages.map((m) => ({
             role: m.role,
